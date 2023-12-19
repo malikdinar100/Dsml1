@@ -1,0 +1,177 @@
+linreg:
+
+from google.colab import files
+files.upload()
+nahar1.csv
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn import datasets, linear_model
+from sklearn import metrics
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.metrics import mean_squared_error, r2_score
+df = pd.read_csv('nahar1.csv')
+X = df[['opening']]
+y = df[['closing']]
+x_train,x_test,y_train,y_test = train_test_split(X,y,test_size=0.3)
+print(x_train)
+print(y_train)
+clf = LinearRegression()
+clf.fit(x_train, y_train)
+y_pred = clf.predict(x_test)
+print(y_pred)
+newvalue=float(input("enter today's opening"))
+y_pred = clf.intercept_ + clf.coef_ *newvalue
+print(y_pred)
+
+mulre:
+
+from google.colab import files
+files.upload()
+nahar1.csv
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn import datasets, linear_model
+from sklearn import metrics
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.metrics import mean_squared_error, r2_score
+df = pd.read_csv('data.csv')
+X=df[['Weight','Volume']]
+y=df[['CO2']]
+X=X.values
+20
+y=y.values
+x_train,x_test,y_train,y_test = train_test_split(X,y,test_size=0.3)
+print(x_train)
+print(y_train)
+regr=linear_model.LinearRegression()
+regr.fit(x_train,y_train)
+predictedCO2=regr.predict([[2300,1300]])
+print(predictedCO2
+
+destree:
+
+from google.colab import files
+files.upload()
+nahar1.csv
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import tree
+from sklearn import metrics
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv('data1.csv')
+X = df[['gives_birth','aquatic_animal','aerial_animal','has_legs']]
+y = df[['class_label']]
+target_names = ['mammal','reptile','fish','ampbibian','bird']
+feature_names = ['gives_birth','aquatic_animal','aerial_animal','has_legs']
+x_train,x_test,y_train,y_test = train_test_split(X,y,test_size=0.3)
+print(x_train)
+print(y_train)
+from sklearn.tree import DecisionTreeClassifier
+clf = DecisionTreeClassifier()
+clf.fit(x_train, y_train)
+y_pred = clf.predict(x_test)
+print(y_pred)
+print(clf.predict(x_train))
+print(y_train.values.ravel())
+
+
+svm:
+
+from sklearn import datasets 
+from sklearn.model_selection import train_test_split 
+from sklearn import metrics 
+from sklearn import svm 
+cancer=datasets.load_breast_cancer()
+x_train,x_test,y_train,y_test=train_test_split(cancer.data,cancer.target,test_size=0.3,random_state=109)
+clf=svm.SVC(kernel='linear')
+clf.fit(x_train,y_train) 
+y_pred=clf.predict(x_test)
+print("Actual values",y_test)
+print("Predicted values",y_pred) 
+print("Accuracy:",metrics.accuracy_score(y_test,y_pred)) 
+print("Precision:",metrics.precision_score(y_test,y_pred))
+print("Recall:",metrics.recall_score(y_test,y_pred))
+
+
+kmean:
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_blobs
+X,y = make_blobs(n_samples = 500,n_features = 2,centers = 
+3,random_state = 23)
+fig = plt.figure(0)
+plt.grid(True)
+plt.scatter(X[:,0],X[:,1])
+plt.show()
+k = 3
+clusters = {}
+np.random.seed(23)
+for idx in range(k):
+ center = 2*(2*np.random.random((X.shape[1],))-1)
+ points = []
+ cluster = {
+ 'center' : center,
+ 'points' : []
+ }
+ 
+ clusters[idx] = cluster
+ 
+clusters
+plt.scatter(X[:,0],X[:,1])
+plt.grid(True)
+for i in clusters:
+ center = clusters[i]['center']
+ plt.scatter(center[0],center[1],marker = '*',c = 'red')
+plt.show()
+
+natural lang:
+import nltk
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+from nltk import ngrams
+sentence= input("Enter the sentence")
+n=int(input("Enter the value of n:"))
+n_grams=ngrams(sentence.split(),n)
+print("ngrams.printing")
+for grams in n_grams:
+ print(grams)
+from nltk import word_tokenize,sent_tokenize
+print("tokens printing")
+print(word_tokenize(sentence))
+print(sent_tokenize(sentence))
+from nltk import pos_tag
+tokenized_text=word_tokenize(sentence)
+tags=tokens_tag=pos_tag(tokenized_text)
+print(tags)
+nltk.download('wordnet')
+from nltk.stem import WordNetLemmatizer
+from nltk.stem import PorterStemmer
+ps= PorterStemmer()
+for w in tokenized_text:
+ print(w,":",ps.stem(w))
+
+scrapp:
+
+import requests
+from bs4 import BeautifulSoup
+URL = "https://realpython.github.io/fake-jobs/"
+page = requests.get(URL)
+print(page.text)
+soup = BeautifulSoup(page.content, "html.parser")
+results = soup.find(id="ResultsContainer")
+job_elements = results.find_all("div", class_="card-content")
+for job_element in job_elements:
+ title_element = job_element.find("h2", class_="title")
+ company_element = job_element.find("h3", class_="company")
+ location_element = job_element.find("p", class_="location")
+ print(title_element.text.strip())
+ print(company_element.text.strip())
+ print(location_element.text.strip())
+ print()
+
+
+

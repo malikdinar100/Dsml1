@@ -1,0 +1,218 @@
+social:
+l1=['Good','Fine','Nice','Happy','Positive']
+l2=['Sad','Tired','Bad','Frustrated','Not','Negative']
+str1=input("Enter your response")
+flag=0
+ncount=0
+t=str1.split()
+for i in range(len(t)):
+ for j in range(len(l1)):
+ if t[1]==l1[j]:
+ flag=1
+ for k in range(len(l2)):
+ if t[i]==l2[k]:
+ ncount=ncount+1
+ flag=1
+if flag==0:
+ print("You are in another mood")
+elif ncount%2==0:
+ print("Positive")
+else:
+ print('Negative')
+
+1. Dot Product of Matrix
+import numpy as np
+def create_matrix(mc):
+ print("Array" +str(mc)+ "Element")
+ array_1 = map(int,input().split())
+ array_1 = np.array(list(array_1))
+ print("\n Array" + str(mc) +"Rowcolumn :")
+ row,column = map(int,input().split())
+ if(len(array_1) != (row*column)):
+ print("Row_column size do not match")
+ return create_matrix(mc)
+ array_1 = array_1.reshape(row,column)
+ print("\n Array" + str(mc))
+ print(array_1)
+ return array_1
+arr1 = create_matrix(1)
+arr2 = create_matrix(2)
+if(arr1.shape == (arr2.shape)):
+ print("Dot product")
+ print(np.dot(arr1,arr2))
+else:
+ print("Dimension do not match")
+
+
+2. Transpose of Matrix
+import numpy as np 
+def create_matrix(mc):
+ print("\nARRAY "+str(mc)+" Elements : ")
+ array_1 = map(int, input().split())
+ array_1 = np.array(list(array_1))
+ #print(arr)
+ print("\nARRAY "+str(mc)+" , ROW COLUMN : ")
+ row,column = map(int, input().split())
+ if(len(array_1)!= (row*column)):
+ print("\nRow and Column size not match with total elements !! retry")
+ return create_matrix(mc)
+ array_1 = array_1.reshape(row,column)
+ print("\nARRAY "+str(mc))
+ print(array_1)
+ print("\nTranspose : ")
+ return array_1
+print(create_matrix(1).transpose())
+
+3. Determinant of Matrix
+import numpy as np 
+def create_matrix(mc):
+ print("\nARRAY "+str(mc)+" Elements : ")
+ array_1 = map(int, input().split())
+ array_1 = np.array(list(array_1))
+ #print(arr)
+ print("\nARRAY "+str(mc)+" , ROW COLUMN : ")
+ row,column = map(int, input().split())
+ if(len(array_1)!= (row*column)):
+ print("\nRow and Column size not match with total elements !! retry")
+ return create_matrix(mc)
+ array_1 = array_1.reshape(row,column)
+ print("\nARRAY "+str(mc))
+ print(array_1)
+ print("\nDeterminant : ")
+ return array_1
+print(np.linalg.det(create_matrix(1)))
+
+4. Trace of Matrix
+import numpy as np 
+def create_matrix(mc):
+ print("\nARRAY "+str(mc)+" Elements : ")
+ array_1 = map(int, input().split())
+ array_1 = np.array(list(array_1))
+ #print(arr)
+ print("\nARRAY "+str(mc)+" , ROW COLUMN : ")
+ row,column = map(int, input().split())
+ if(len(array_1)!= (row*column)):
+ print("\nRow and Column size not match with total elements !! retry")
+ return create_matrix(mc)
+ array_1 = array_1.reshape(row,column)
+ print("\nARRAY "+str(mc))
+ print(array_1)
+ print("\nTrace : ")
+ return array_1
+print(create_matrix(1).trace())
+
+
+5. Inverse of Matrix
+import numpy as np 
+def create_matrix(mc):
+ print("\nARRAY "+str(mc)+" Elements : ")
+ array_1 = map(int, input().split())
+ array_1 = np.array(list(array_1))
+ #print(arr)
+ print("\nARRAY "+str(mc)+" , ROW COLUMN : ")
+ row,column = map(int, input().split())
+ if(len(array_1)!= (row*column)):
+ print("\nRow and Column size not match with total elements !! retry")
+ return create_matrix(mc)
+ array_1 = array_1.reshape(row,column)
+9
+ print("\nARRAY "+str(mc))
+ print(array_1)
+ print("\nInverse : ")
+ return array_1
+print(np.linalg.inv(create_matrix(1)))
+
+6. Rank of Matrix
+import numpy as np 
+def create_matrix(mc):
+ print("\nARRAY "+str(mc)+" Elements : ")
+ array_1 = map(int, input().split())
+ array_1 = np.array(list(array_1))
+ #print(arr)
+ print("\nARRAY "+str(mc)+" , ROW COLUMN : ")
+ row,column = map(int, input().split())
+ if(len(array_1)!= (row*column)):
+ print("\nRow and Column size not match with total elements !! retry")
+ return create_matrix(mc)
+ array_1 = array_1.reshape(row,column)
+ print("\nARRAY "+str(mc))
+ print(array_1)
+ print("\nRank : ")
+ return array_1
+print(np.linalg.matrix_rank(create_matrix(1)))
+
+Program to implement Naive Bayes classification using any dataset Input:
+PROGRAM:
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+X,y=load_iris(return_X_y=True)
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.5,random_state=0)
+gnb=GaussianNB()
+y_pred=gnb.fit(X_train,y_train).predict(X_test)
+print(y_pred)
+x_new=[[5,5,4,4]]
+y_new=gnb.fit(X_train,y_train).predict(x_new)
+print("predicted output for [[5,5,4,4]]:",y_new)
+print("Naive Bayes score:",gnb.score(X_test,y_test))
+
+
+knn cla:
+
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_iris
+irisdata=load_iris()
+print(irisdata.data)
+x=irisdata.data
+y=irisdata.target
+x_train ,x_test, y_train, y_test=train_test_split(x, y )
+Knn=KNeighborsClassifier(n_neighbors=1)
+Knn.fit(x_train,y_train)
+print(x_test)
+print(Knn.predict(x_test))
+print(y_test)
+result=Knn.predict([[2,4,6,2]])
+print(irisdata.target_names[result])
+
+qr:
+
+import pyqrcode 
+import png 
+from pyqrcode import QRCode 
+ 
+# String which represents the QR code 
+s = input("enter your url")
+myqr=input("enter your file name") 
+# Generate QR code 
+url = pyqrcode.create(s) 
+ 
+# Create and save the svg file naming "myqr.svg" 
+url.svg(myqr+".svg", scale = 8) 
+ 
+# Create and save the png file naming "myqr.png" 
+url.png(myqr+'.png', scale = 6)
+
+pie:
+For Graph
+import matplotlib.pyplot as plt
+x = [1,2,3,4,5]
+y = [1,4,9,16,25]
+plt.xlabel("Red") 
+plt.plot(x,y)
+plt.show()
+For Pie Chart
+import matplotlib.pyplot as plt
+import numpy as np
+y = np.array([35, 25, 25, 15])
+plt.pie(y,autopct='%1.1f%%')
+plt.show()
+
+detre public :
+from sklearn.datasets import load_iris
+from sklearn import tree
+iris=load_iris()
+X,y=iris.data, iris.target
+clf=tree.DecisionTreeClassifier()
+clf=clf.fit(X,y)
+tree.plot_tree(clf)
